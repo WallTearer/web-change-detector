@@ -1,4 +1,4 @@
-package com.webchange.detector;
+package com.webchange.detector.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;

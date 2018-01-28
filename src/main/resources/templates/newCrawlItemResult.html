@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>New web change detection</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+New web change detection created
+
+<h1>Result</h1>
+<p th:text="'url: ' + ${crawlItemForm.url}" />
+<p th:text="'selector: ' + ${crawlItemForm.selector}" />
+<p th:text="'content: ' + ${crawlItemForm.content}" />
+<p th:text="'email: ' + ${crawlItemForm.email}" />
+<a href="/new">Create another web change detection</a>
+
+</body>
+</html>
