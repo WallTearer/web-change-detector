@@ -1,24 +1,32 @@
 package com.webchange.detector.form;
 
+import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.URL;
+
+import javax.validation.constraints.AssertTrue;
 
 public class CrawlItemForm {
 
     @NotEmpty
+    @URL
     private String url;
 
-    @URL
     private String selector;
 
-    @NotEmpty
     private String content;
 
     @NotEmpty
+    @Email
     private String email;
 
     public String getUrl() {
         return url;
+    }
+
+    @AssertTrue(message = "Selector or content should be given")
+    public boolean isSelectorOrContentSet() {
+        return (selector != null && !selector.isEmpty()) ||(content != null && !content.isEmpty());
     }
 
     public void setUrl(String url) {

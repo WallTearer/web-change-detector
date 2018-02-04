@@ -10,15 +10,18 @@
     <form action="#" th:action="@{/new}" th:object="${crawlItemForm}" method="post">
         <p>
             url: <input type="text" th:field="*{url}" />
+            <span th:if="${#fields.hasErrors('url')}" th:errors="*{url}">&nbsp;</span>
         </p>
         <p>
             selector: <input type="text" th:field="*{selector}" />
+            <span th:if="${#fields.hasErrors('selectorOrContentSet')}" th:errors="*{selectorOrContentSet}">&nbsp;</span>
         </p>
         <p>
             content: <input type="text" th:field="*{content}" />
         </p>
         <p>
             email: <input type="text" th:field="*{email}" />
+            <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}">&nbsp;</span>
         </p>
         <p>
             <input type="submit" value="Submit" />
