@@ -1,0 +1,5 @@
+env.db.host=dbhost
+env.db.port=3306
+env.db.name=dbname
+env.db.username=dbuser
+env.db.password=dbpass
