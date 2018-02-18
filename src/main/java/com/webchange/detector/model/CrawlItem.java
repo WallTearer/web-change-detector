@@ -5,6 +5,8 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.validator.constraints.NotEmpty;
 import javax.persistence.*;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -74,5 +76,26 @@ public class CrawlItem {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void incrementStats() {
+        crawlAttempts++;
+        lastCrawlAt = Timestamp.valueOf(LocalDateTime.now());
+    }
+
+    @Override
+    public String toString() {
+        return String.format(
+            "(%d, %d, %s, %s, %s)",
+            id,
+            crawlAttempts,
+            url,
+            content,
+            lastCrawlAt == null ? "null" : lastCrawlAt.toString()
+        );
     }
 }
