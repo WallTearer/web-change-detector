@@ -90,11 +90,12 @@ public class CrawlItem {
     @Override
     public String toString() {
         return String.format(
-            "(%d, %d, %s, %s, %s)",
+            "(%d, %d, %s, %s, %s, %s)",
             id,
             crawlAttempts,
             url,
             content,
+            selector,
             lastCrawlAt == null ? "null" : lastCrawlAt.toString()
         );
     }
