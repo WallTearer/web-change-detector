@@ -30,6 +30,8 @@ public class CrawlItem {
 
     private Integer crawlAttempts = 0;
 
+    private Integer mailAttempts = 0;
+
     @CreationTimestamp
     private Date createdAt;
 
@@ -85,6 +87,10 @@ public class CrawlItem {
     public void incrementStats() {
         crawlAttempts++;
         lastCrawlAt = Timestamp.valueOf(LocalDateTime.now());
+    }
+
+    public void incrementMailAttempts() {
+        mailAttempts++;
     }
 
     @Override
