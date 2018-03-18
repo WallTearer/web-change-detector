@@ -8,3 +8,5 @@ env.mail.host=smtp.gmail.com
 env.mail.port=587
 env.mail.username=some@email.address.dmn
 env.mail.password=somepass
+
+env.crawler.retryDelay=5

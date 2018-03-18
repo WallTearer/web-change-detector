@@ -9,6 +9,7 @@ import org.jsoup.nodes.Document;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import java.io.IOException;
@@ -23,9 +24,12 @@ public class WebCrawler {
     @Autowired
     private WebsiteParser parser;
 
+    @Value("${crawler.retryDelay}")
+    private int retryDelay;
+
     @Scheduled(fixedDelayString = "${crawler.delay}") // interval between invocations measured from the completion of the task
     public void crawlItems() {
-        CrawlItem crawlItem = crawlItemRepository.findNextToCrawl();
+        CrawlItem crawlItem = crawlItemRepository.findNextToCrawl(retryDelay);
         if (crawlItem == null) {
             logger.info("Nothing to crawl");
             return;
