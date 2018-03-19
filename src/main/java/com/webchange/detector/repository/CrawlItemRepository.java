@@ -17,6 +17,6 @@ public interface CrawlItemRepository extends CrudRepository<CrawlItem, Long> {
     )
     CrawlItem findNextToCrawl(@Param("retryDelay") int retryDelay);
 
-    @Query(value = "SELECT * FROM detector.crawl_item WHERE status = 'FOUND' ORDER BY updated_at ASC LIMIT 1", nativeQuery = true)
+    @Query(value = "SELECT * FROM crawl_item WHERE status = 'FOUND' ORDER BY updated_at ASC LIMIT 1", nativeQuery = true)
     CrawlItem findNextToSendEmail();
 }
