@@ -24,9 +24,17 @@ public class CrawlItemForm {
         return url;
     }
 
-    @AssertTrue(message = "Selector or content should be given")
+    @AssertTrue(message = "Content or CSS Selector should be given")
     public boolean isSelectorOrContentSet() {
-        return (selector != null && !selector.isEmpty()) ||(content != null && !content.isEmpty());
+        return hasSelector() || hasContent();
+    }
+
+    public boolean hasSelector() {
+        return (selector != null && !selector.isEmpty());
+    }
+
+    public boolean hasContent() {
+        return (content != null && !content.isEmpty());
     }
 
     public void setUrl(String url) {

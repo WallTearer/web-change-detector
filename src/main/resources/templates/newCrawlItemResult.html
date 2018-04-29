@@ -1,19 +1,23 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>New web change detection</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-</head>
+<html th:include="layout :: page">
 <body>
+<div th:fragment="content">
+    <h4 class="mb-4">New web change detection created</h4>
 
-New web change detection created
+    <h6>Url to monitor</h6>
+    <p th:text="${crawlItemForm.url}" />
 
-<h1>Result</h1>
-<p th:text="'url: ' + ${crawlItemForm.url}" />
-<p th:text="'selector: ' + ${crawlItemForm.selector}" />
-<p th:text="'content: ' + ${crawlItemForm.content}" />
-<p th:text="'email: ' + ${crawlItemForm.email}" />
-<a href="/new">Create another web change detection</a>
+    <h6 th:if="${crawlItemForm.hasContent()}">Content to look for</h6>
+    <p th:if="${crawlItemForm.hasContent()}" th:text="${crawlItemForm.content}" />
 
+    <h6>Your email</h6>
+    <p th:text="${crawlItemForm.email}" />
+
+    <h6 th:if="${crawlItemForm.hasSelector()}">Advanced: CSS Selector</h6>
+    <p th:if="${crawlItemForm.hasSelector()}" th:text="${crawlItemForm.selector}" />
+
+    <div class="text-center">
+        <a class="btn btn-primary btn-lg w-50" href="/new">Create another one</a>
+    </div>
+</div>
 </body>
 </html>

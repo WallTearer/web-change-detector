@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      th:fragment="page"
+>
+
+<head>
+    <title>Website Change Detector</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous"
+    />
+</head>
+
+<body class="bg-light">
+
+    <div class="px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+        <h1 class="display-4">Website Change Detector</h1>
+        <p class="lead">
+            We will monitor the page on a website for the content that you expect to appear.<br />
+            You will get an alert email once the content is found.
+        </p>
+        <hr />
+    </div>
+
+    <div th:include="this :: content" class="container col-md-4" />
+
+</body>
+</html>

@@ -1,33 +1,32 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>New web change detection</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-</head>
+<html th:include="layout :: page">
 <body>
-    Create new web change detection
+<div th:fragment="content">
+    <h4 class="mb-4">Create a new web change detection</h4>
 
     <form action="#" th:action="@{/new}" th:object="${crawlItemForm}" method="post">
         <p>
-            url: <input type="text" th:field="*{url}" />
-            <span th:if="${#fields.hasErrors('url')}" th:errors="*{url}">&nbsp;</span>
+            <label for="url">Url to monitor</label>
+            <input type="text" th:field="*{url}" class="form-control" th:classappend="${#fields.hasErrors('url')} ? is-invalid : null " />
+            <span th:if="${#fields.hasErrors('url')}" th:errors="*{url}" class="invalid-feedback">&nbsp;</span>
         </p>
         <p>
-            selector: <input type="text" th:field="*{selector}" />
-            <span th:if="${#fields.hasErrors('selectorOrContentSet')}" th:errors="*{selectorOrContentSet}">&nbsp;</span>
+            <label for="content">Content to look for</label>
+            <input type="text" th:field="*{content}" class="form-control" th:classappend="${#fields.hasErrors('selectorOrContentSet')} ? is-invalid : null " />
+            <span th:if="${#fields.hasErrors('selectorOrContentSet')}" th:errors="*{selectorOrContentSet}" class="invalid-feedback">&nbsp;</span>
         </p>
         <p>
-            content: <input type="text" th:field="*{content}" />
+            <label for="email">Your email</label>
+            <input type="text" th:field="*{email}" class="form-control" th:classappend="${#fields.hasErrors('email')} ? is-invalid : null " />
+            <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="invalid-feedback">&nbsp;</span>
         </p>
         <p>
-            email: <input type="text" th:field="*{email}" />
-            <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}">&nbsp;</span>
+            <label for="selector">Advanced: CSS Selector (leave blank if you don't know what it is)</label>
+            <input type="text" th:field="*{selector}" class="form-control" />
         </p>
-        <p>
-            <input type="submit" value="Submit" />
-            <input type="reset" value="Reset" />
-        </p>
+        <div class="text-center">
+            <input type="submit" value="Create" class="btn btn-primary btn-lg w-50" />
+        </div>
     </form>
-
+</div>
 </body>
 </html>
